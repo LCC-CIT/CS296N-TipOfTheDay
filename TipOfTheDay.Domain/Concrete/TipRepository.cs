@@ -11,12 +11,11 @@ namespace TipOfTheDay.Domain.Concrete
     // These are just stubs that return empty collections or objects for now
     public class TipRepository : ITipRepository
     {
-        TipDbContext db = new TipDbContext();
-
         public TipRepository()
         {
             /* 
             // Just do this once!
+            // Add a tip to the database for testing
              Tip tip = new Tip() { Author = new Member("Brian"),       // add a Member object
                             Title = "C# Object Initialization",
                             SkillLevel = 3,
@@ -39,14 +38,17 @@ namespace TipOfTheDay.Domain.Concrete
         // Stub
         public IQueryable<Tip> GetTips()
         {
-            return db.Tips;
+            var db = new TipDbContext();
+            return db.Tips.Include("Author");   // Force "eager loading"
         }
 
         // Stub
         public Tip GetTip(DateTime date)
         {
-            return (from t in db.Tips
+            var db = new TipDbContext();
+            Tip tip = (from t in db.Tips
                     select t).FirstOrDefault();
+            return tip;
         }
     }
 }

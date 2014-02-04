@@ -16,37 +16,21 @@ namespace TipOfTheDay.Domain.Entities
         public string Citation { get; set; }
         public string Link { get; set; }
         public int? Rating { get; set; }        // Nullable so that reatings can be omitted
-        public Member Author { get; set; }
+        public virtual Member Author { get; set; } // virtual properties enable EF "lazy loading"
 
         // The rest of these properties are lists
         // They are read only since we don't want
         // to add lists, just add to lists
-        public List<Tag> Tags 
-        {
-            get
-            {
-                return tags;
-            }
-        }
+        public virtual List<Tag> Tags 
+        { get { return tags; } }
 
-        public List<Language> Languages    
-        {
-            get
-            {
-                return languages;
-            }
-        }
+        public virtual List<Language> Languages    
+        { get{return languages;} }
 
+        public virtual List<Comment> Comments     
+        {get { return comments;} }
 
-        public List<Comment> Comments     
-        {
-            get
-            {
-                return comments;
-            }
-        }
-
-        // Backing variables for the lists
+        // Backing variables for the List properties
         private List<Comment> comments;
         private List<Tag> tags;
         private List<Language> languages;
@@ -60,11 +44,10 @@ namespace TipOfTheDay.Domain.Entities
             comments.Add(com);
         }
 
-
         // Constructor
         public Tip()
         {
-            // We need to create the list objects. They're just empty lists.
+            // We need to create the list objects. They'll just be empty lists to begin with.
             comments = new List<Comment>();
             languages = new List<Language>();
             tags = new List<Tag>();

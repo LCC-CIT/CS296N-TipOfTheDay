@@ -10,6 +10,10 @@ namespace TipOfTheDay.Domain.Entities
         public int LanguageId { get; set; }
         public string Name { get; set; }
 
+        public Language()
+        {
+        }
+
         public Language(string n)
         {
             Name = n;
@@ -20,6 +24,10 @@ namespace TipOfTheDay.Domain.Entities
     {
         public int TagId { get; set; }
         public string Word { get; set; }
+
+        public Tag()
+        {
+        }
 
         public Tag(string w)
         {

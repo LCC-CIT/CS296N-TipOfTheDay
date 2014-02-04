@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9D7A7363-F282-4973-80B7-9C2B4BC7D942}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TipOfTheDay.Domain", "TipOfTheDay.Domain\TipOfTheDay.Domain.csproj", "{4760CB67-E0B1-43B5-9937-0B5C8720CDE1}"
 EndProject

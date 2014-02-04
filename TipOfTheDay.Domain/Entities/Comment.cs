@@ -13,6 +13,11 @@ namespace TipOfTheDay.Domain.Entities
         public Member Author { get; set; }
         public Tip TheTip { get; set; }
 
+        public Comment()
+        {
+            Date = System.DateTime.Today.ToString();
+        }
+
         public Comment(string t)
         {
             Text = t;

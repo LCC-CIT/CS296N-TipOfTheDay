@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using TipOfTheDay.Domain.Concrete;
 using TipOfTheDay.Domain.Entities;
 
+// Written by Brian Bird, 2/16/2012
+// MVC web site example
+
 namespace TipOfTheDay.WebUI.Controllers
 {
     public class HomeController : Controller

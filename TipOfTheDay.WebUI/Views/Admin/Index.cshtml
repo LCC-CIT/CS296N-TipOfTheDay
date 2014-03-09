@@ -1,0 +1,76 @@
+﻿@model IEnumerable<TipOfTheDay.Domain.Entities.Tip>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Tip List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            SkillLevel
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Text
+        </th>
+        <th>
+            Example
+        </th>
+        <th>
+            Citation
+        </th>
+        <th>
+            Link
+        </th>
+        <th>
+            Rating
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SkillLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Example)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Citation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Link)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TipId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TipId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TipId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -11,17 +11,17 @@ namespace TipOfTheDay.Domain.Entities
         public string Name { get; set; }
         public string Email { get; set; }
         public int? Rating { get; set; }        // Nullable so that ratings aren't required
-        public virtual List<Tip> Tips { get; set; }     // virtual to enable lazy loading
+//        public virtual List<Tip> Tips { get; set; }     // virtual to enable lazy loading
 
         public Member()                         // If you add an overloaded constructor,
         {                                       // you also have to add a parameterless constructor
-            Tips = new List<Tip>();              // since a default constructor is no longer supplied automatically
+//            Tips = new List<Tip>();              // since a default constructor is no longer supplied automatically
         }                                      
 
-        public Member(string m)
+        public Member(string n)
         {
-            Name = m;
-            Tips = new List<Tip>();
+            Name = n;
+ //           Tips = new List<Tip>();
         }
     }
 }

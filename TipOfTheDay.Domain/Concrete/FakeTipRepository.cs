@@ -26,8 +26,8 @@ namespace TipOfTheDay.Domain.Concrete
                             Example = "Cat cat = new Cat { Age = 10, Name = \"Fluffy\" };",
                             Citation = "MSDN Library, C# Programming Guide, Object and Collection Initializers",
                             Link = "http://msdn.microsoft.com/en-us/library/bb384062.aspx",
-                            Languages = {new Language("C#")},
-                            Tags = {new Tag("Objects"), new Tag("Initialization")}
+                            Languages = {new Language(null, "C#")},
+                            Tags = {new Tag(null, "Objects"), new Tag(null, "Initialization")}      // TODO: test with references to Tip objects
                           }
         };
 
@@ -43,6 +43,25 @@ namespace TipOfTheDay.Domain.Concrete
             return currentTip;
         }
 
+        public void SaveTip(Tip tip)
+        {
+            throw new NotImplementedException();
+        }
 
+
+        bool ITipRepository.SaveTip(Tip tip)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateTip(Tip tip)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Init()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

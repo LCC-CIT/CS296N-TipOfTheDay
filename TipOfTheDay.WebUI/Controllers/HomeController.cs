@@ -33,6 +33,8 @@ namespace TipOfTheDay.WebUI.Controllers
 
         public ViewResult Index()
         {
+            if (tipRepo.GetTips().Count() == 0) // Just do this the first time the db is created
+                tipRepo.Init();
 
             Tip todaysTip = tipRepo.GetTip(new DateTime(2012, 3, 1));   // TODO use today's day and month
             return View(todaysTip);

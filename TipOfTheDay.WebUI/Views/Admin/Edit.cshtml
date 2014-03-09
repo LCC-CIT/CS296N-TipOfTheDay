@@ -1,0 +1,26 @@
+﻿@model TipOfTheDay.Domain.Entities.Tip
+
+@{
+    ViewBag.Title = "Edit Tip: "  + @Model.Title;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Edit Tip:  @Model.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+
+    <h3>Tags</h3>
+    for (int i = 0; i < Model.Tags.Count(); i++) 
+    {
+        <fieldset>
+            <legend>Tag @(i + 1): @Model.Tags[i].Word</legend>
+            @Html.Hidden("[" + i + "].TagId", Model.Tags[i].TagId)
+        </fieldset>
+    }
+    
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel and return to List", "Index")
+
+}

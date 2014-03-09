@@ -12,3 +12,5 @@
 *.log 
 [Tt]humbs.db 
 TipOfTheDay.Domain/Concrete/TipOfTheDayDatabase.dacpac
+*.mdf
+*.ldf

@@ -9,27 +9,29 @@ namespace TipOfTheDay.Domain.Concrete
     // defines a repository through which we will obtain and update root entity objects.
     public interface ITipRepository
     {
-        // IQueryable<Tip> Tips { get; }
+        void Init();                        // Put test data in the database
         IQueryable<Tip> GetTips();          // Gets all the tips
         Tip GetTip(DateTime date);          // Gets the tip for a specific day
+        bool SaveTip(Tip tip);
+        bool UpdateTip(Tip tip);
     }
 
     public interface IMemberRepository
     {
         List<Member> GetMembers();
-        void UpdateProduct(Member member);
+        void UpdateMember(Member member);
     }
 
     public interface ITagRepository
     {
         List<Tag> GetTags();
-        void UpdateProduct(Tag tag);
+        void UpdateTag(Tag tag);
     }
 
     public interface ILanguageRepository
     {
         List<Language> GetLanguages();
-        void UpdateProduct(Language language);
+        void UpdateLanguage(Language language);
     }
 
 }

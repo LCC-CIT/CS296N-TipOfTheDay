@@ -1,4 +1,5 @@
 ﻿@model TipOfTheDay.Domain.Entities.Tip
+@using TipOfTheDay.Domain.Entities
 
 @{
     ViewBag.Title = "Index";
@@ -6,38 +7,48 @@
 
 <div style="width:500px">
 
-        <h1>Programming Tip Of the Day</h1>
+    <h1>Programming Tip Of the Day</h1>
+        
+    @if(Session["User"] == null)
+    {
+        <p>@Html.ActionLink("Log in", "LogIn", "Member")</p>
+    }
+    else
+    {
+       <p>User: @(((Member)Session["User"]).Name)</p>
+       <p>Add a tip: @Html.ActionLink("Add a tip", "AddTip", "Admin")</p>
+    }
 
-        <h3>@Model.Title</h3>
-        Skill Level: @Model.SkillLevel/5 <br /><br />
-        @Model.Text<br /><br />
-        <code>@Model.Example</code><br /><br />
-        Rating: @Model.Rating/5
-        <br /><br />
-        <cite>@Model.Citation<br /></cite>
-        <a href="@Model.Link">@Model.Link</a><br />
-        <br />
-        <u>Languages:</u> <br />
-        @foreach (TipOfTheDay.Domain.Entities.Language lang in @Model.Languages)
-        {
-            @lang.Name <br />
-        }
-        <br />
-        <U>Tags:</U> <br />
-        @foreach (TipOfTheDay.Domain.Entities.Tag tag in @Model.Tags)
-        {
-            @tag.Word <br />
-        }
-        <br />
-        <U>Comments:</U> <br />
-        @foreach (TipOfTheDay.Domain.Entities.Comment com in @Model.Comments)
-        {
-            @com.Text <br />
-            @com.Author.Name <br />
-            @com.Date.ToString() <br /> 
-        }
+    <h3>@Model.Title</h3>
+    Skill Level: @Model.SkillLevel/5 <br /><br />
+    @Model.Text<br /><br />
+    <code>@Model.Example</code><br /><br />
+    Rating: @Model.Rating/5
+    <br /><br />
+    <cite>@Model.Citation<br /></cite>
+    <a href="@Model.Link">@Model.Link</a><br />
+    <br />
+    <u>Languages:</u> <br />
+    @foreach (TipOfTheDay.Domain.Entities.Language lang in @Model.Languages)
+    {
+        @lang.Name <br />
+    }
+    <br />
+    <U>Tags:</U> <br />
+    @foreach (TipOfTheDay.Domain.Entities.Tag tag in @Model.Tags)
+    {
+        @tag.Word <br />
+    }
+    <br />
+    <U>Comments:</U> <br />
+    @foreach (TipOfTheDay.Domain.Entities.Comment com in @Model.Comments)
+    {
+        @com.Text <br />
+        @com.Author.Name <br />
+        @com.Date.ToString() <br /> 
+    }
 
-        <br />
-       @Html.ActionLink("See all tips", "TipList")
-    </div>
+    <br />
+    @Html.ActionLink("See all tips", "TipList")
+</div>
 

@@ -55,11 +55,16 @@ namespace TipOfTheDay.Domain.Concrete
         }
 
 
-        public bool SaveTip(Tip tip)
+        public bool SaveTip(Tip tip)    // This only works for tips that aren't in the database
         {
             var db = new TipDbContext();
             if (tip != null && tip.TipId == 0)
             {
+                if (tip.Author.MemberId != 0)   // If this is an existing member, then get the object from the dB
+                {
+                    Member author = db.Members.FirstOrDefault(m => m.MemberId == tip.Author.MemberId);
+                    tip.Author = author;
+                }
                 db.Tips.Add(tip);
                 db.SaveChanges();
                 return true;
@@ -71,7 +76,7 @@ namespace TipOfTheDay.Domain.Concrete
         }
 
 
-        public bool UpdateTip(Tip tip)
+        public bool UpdateTip(Tip tip)  // This only works for tips that are in the database
         {
             bool success = false;
             var db = new TipDbContext();
@@ -80,11 +85,13 @@ namespace TipOfTheDay.Domain.Concrete
                 Tip tipFromDb = db.Tips.Find(tip.TipId);
                 if (tipFromDb != null)
                 {
-                    // Shallow copy of simple properties
+                    // CopyB simple properties
                     tipFromDb.Citation = tip.Citation;
                     tipFromDb.Date = tip.Date;
                     tipFromDb.Example = tip.Example;
                     tipFromDb.Link = tip.Link;
+                    tipFromDb.Rating = tip.Rating;
+                    tipFromDb.SkillLevel = tip.SkillLevel;
                     tipFromDb.Text = tip.Text;
                     tipFromDb.Title = tip.Title;
 

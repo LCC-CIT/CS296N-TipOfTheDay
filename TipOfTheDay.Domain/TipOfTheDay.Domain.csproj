@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\MemberRepository.cs" />
     <Compile Include="Concrete\TipDbContext.cs" />
     <Compile Include="Concrete\FakeTipRepository.cs" />
     <Compile Include="Concrete\TipRepository.cs" />

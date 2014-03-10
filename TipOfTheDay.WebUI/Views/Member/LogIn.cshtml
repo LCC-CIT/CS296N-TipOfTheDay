@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Log-in";
+}
+
+<h2>Log in</h2>
+@using(Html.BeginForm())
+{
+    @:E-mail address: @Html.TextBox("Email")<br />
+    <input type="submit" value="Log in" />
+}
+<h2>Or Register</h2>
+@using(Html.BeginForm())
+{
+    <p>If you are not already registerd, enter your information here:</p>
+    @:Name: @Html.TextBox("Name")<br />
+    @:E-mail address: @Html.TextBox("Email")<br />
+    <input type="submit" value="Register" />
+}

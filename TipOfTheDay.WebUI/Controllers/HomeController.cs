@@ -20,7 +20,6 @@ namespace TipOfTheDay.WebUI.Controllers
         {
             // Choose the fake or real repository below: 
             tipRepo = new Domain.Concrete.TipRepository();
-            //tipRepo = new Domain.Concrete.FakeTipRepository();
         }
 
         // Use this for dependency injection

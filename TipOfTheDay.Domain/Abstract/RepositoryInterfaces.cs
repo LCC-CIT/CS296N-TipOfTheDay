@@ -18,8 +18,9 @@ namespace TipOfTheDay.Domain.Concrete
 
     public interface IMemberRepository
     {
-        List<Member> GetMembers();
-        void UpdateMember(Member member);
+        IQueryable<Member> GetMembers();
+        bool UpdateMember(Member member);
+        bool SaveMember(Member member);
     }
 
     public interface ITagRepository

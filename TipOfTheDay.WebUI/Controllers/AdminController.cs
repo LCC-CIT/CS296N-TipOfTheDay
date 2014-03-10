@@ -45,6 +45,23 @@ namespace TipOfTheDay.Controllers
             return RedirectToAction("Index");
         }
 
+        public ViewResult AddTip()
+        {
+            Tip tip = new Tip();
+            tip.Author = (Member)Session["User"];
+            return View("Edit", new Tip());
+        }
+
+        [HttpPost]
+        public ActionResult AddTip(Tip tip, List<Tag> tags)
+        {
+            // TODO process tags
+            tip.Author = (Member)Session["User"];
+            tipRepo.SaveTip(tip);
+            return RedirectToAction("Index");
+        }
+
+
         public ActionResult Init()
         {
             tipRepo.Init();

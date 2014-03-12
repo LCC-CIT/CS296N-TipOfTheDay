@@ -33,14 +33,21 @@ namespace TipOfTheDay.Controllers
         public ViewResult Edit(int id)
         {
             Tip tip = tipRepo.GetTips().FirstOrDefault(t => t.TipId == id);
+            var tagList = new MultiSelectList<SelectListItem>();
+            foreach (var item in tip.Tags)
+                tagList.Add(new SelectListItem { Text = item.Word, Value = item.TagId.ToString() });
+
+            ViewBag.TagList = tagList;
             return View(tip);
         }
 
         [HttpPost]
-        public ActionResult Edit(Tip tip, List<Tag> tags)
+        public ActionResult Edit(Tip tip)
         {
-           foreach(Tag tag in tags)    // tags were not persisted as part of tip, need to add them back
-              tip.Tags.Add(tag);      // Warning: These tags just have Id's - the rest of the properties will be restored in the repository
+           foreach(SelectListItem item in (IEnumerable<SelectListItem>)ViewBag.TagList)    // tags were not persisted as part of tip, need to add them back
+              if(item.Selected)
+                  tip.Tags.Add(new Tag() { Word = item.Text, TagId = Int32.Parse(item.Value) });      // Warning: These tags just have Id's - the rest of the properties will be restored in the repository
+            
             tipRepo.UpdateTip(tip);
             return RedirectToAction("Index");
         }

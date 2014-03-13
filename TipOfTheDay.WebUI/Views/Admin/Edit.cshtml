@@ -12,7 +12,7 @@
     @Html.EditorForModel()
 
     <h3>Tags</h3>
-    @Html.ListBox("TagList")
+    @Html.ListBox("TagList", ViewBag.TagList as MultiSelectList)
     <input type="submit" value="Save" />
     @Html.ActionLink("Cancel and return to List", "Index")
 

@@ -47,6 +47,8 @@ namespace TipOfTheDay.Controllers
 
         public ViewResult AddTip()
         {
+            Tip tip = new Tip();
+            tip.Author = (Member)Session["User"];
             return View("Edit", new Tip());
         }
 

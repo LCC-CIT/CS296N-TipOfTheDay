@@ -43,7 +43,11 @@ namespace TipOfTheDay.Domain.Concrete
         public IQueryable<Tip> GetTips()
         {
             var db = new TipDbContext();
-            return db.Tips.Include("Author");   // Force "eager loading"
+            return db.Tips.Include("Author")
+                          .Include("Tags")
+                          .Include("Languages")
+                          .Include("Comments")
+                          .Include("Comments.Author");   // Force "eager loading"
         }
 
         
@@ -51,7 +55,8 @@ namespace TipOfTheDay.Domain.Concrete
         {
             var db = new TipDbContext();
             Tip tip = (from t in db.Tips
-                    select t).Include(t => t.Comments.Select(c => c.Author)).FirstOrDefault();
+                       select t).Include(t => t.Comments.Select(c => c.Author)).FirstOrDefault();
+
             return tip;
         }
 

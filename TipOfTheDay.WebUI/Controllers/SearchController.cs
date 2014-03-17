@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TipOfTheDay.Domain.Abstract;
 using TipOfTheDay.Domain.Concrete;
+using TipOfTheDay.Domain.Entities;
 
 namespace TipOfTheDay.Controllers
 {
@@ -34,6 +35,15 @@ namespace TipOfTheDay.Controllers
             return View(memberRepo.GetMembers());
         }
 
+        [HttpPost]
+        public ActionResult FindTipByAuthor(int memberId)
+        {
+            int num = memberId;
+            IEnumerable<Tip> tips = from t in tipRepo.GetTips()
+                       where t.Author.MemberId == memberId
+                       select t;
+            return View("TipList", tips);
+        }
 
     }
 }

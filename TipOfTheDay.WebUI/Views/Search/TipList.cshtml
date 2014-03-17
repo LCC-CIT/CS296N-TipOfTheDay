@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TipOfTheDay.Domain.Entities.Tip>
+
+@{
+    ViewBag.Title = "TipList";
+}
+
+<h2>TipList</h2>
+@foreach(var tip in Model)
+{
+  <h3>@tip.Title</h3>
+    @:Skill Level: @tip.SkillLevel/5 <br /><br />
+    @tip.Text<br /><br />
+    <code>@tip.Example</code><br /><br />
+    @:Rating: tip.Rating/5
+    <br /><br />
+    <cite>@tip.Citation<br /></cite>
+    <a href="@tip.Link">@tip.Link</a><br />
+    <br />
+    <u>Languages:</u> <br />
+    if(tip.Languages != null)
+    {
+        foreach (TipOfTheDay.Domain.Entities.Language lang in tip.Languages)
+        {
+            @lang.Name <br />
+        }
+    }
+    <br />
+    <U>Tags:</U> <br />
+    if(tip.Tags != null)
+    {
+        foreach (TipOfTheDay.Domain.Entities.Tag tag in tip.Tags)
+        {
+            @tag.Word <br />
+        }
+    }
+    <br />
+    <U>Comments:</U> <br />
+    if(tip.Comments != null)
+    {
+        foreach (TipOfTheDay.Domain.Entities.Comment com in tip.Comments)
+        {
+            @com.Text <br />
+            @com.Author.Name <br />
+            @com.Date.ToString() <br /> 
+        }
+    }
+}

@@ -6,7 +6,9 @@
 
 
 <h2>Search for a Tip by Author</h2>
+@using(Html.BeginForm())
+{
+    @Html.DropDownList("MemberId", new SelectList(Model, "MemberId", "Name"))
 
-@Html.DropDownList("MemberId", new SelectList(Model, "MemberId", "Name"))
-
-@Html.ActionLink("Edit", "Edit", new { id = item.TipId }) |
+    <input type="submit" value="Search" />
+}

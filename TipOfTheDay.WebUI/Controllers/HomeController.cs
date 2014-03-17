@@ -42,7 +42,7 @@ namespace TipOfTheDay.WebUI.Controllers
 
         public ViewResult TipList()
         {
-            return View(tipRepo.GetTips() );
+            return View(tipRepo.GetTips());
         }
 
     }

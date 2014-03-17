@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TipOfTheDay.Domain.Abstract;
 
 namespace TipOfTheDay.Domain.Concrete
 {

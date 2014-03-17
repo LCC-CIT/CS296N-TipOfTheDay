@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TipOfTheDay.Domain.Entities;
+using TipOfTheDay.Domain.Abstract;
 
 namespace TipOfTheDay.Domain.Concrete
 {

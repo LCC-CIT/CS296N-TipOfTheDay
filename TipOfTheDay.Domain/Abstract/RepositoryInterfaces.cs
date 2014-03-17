@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using TipOfTheDay.Domain.Entities;
 
-namespace TipOfTheDay.Domain.Concrete
+namespace TipOfTheDay.Domain.Abstract
 {
     // defines a repository through which we will obtain and update root entity objects.
     public interface ITipRepository

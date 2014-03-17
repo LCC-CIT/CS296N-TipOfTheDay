@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using TipOfTheDay.Domain.Entities;
+using TipOfTheDay.Domain.Abstract;
 
 namespace TipOfTheDay.Domain.Concrete
 {

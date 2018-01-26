@@ -4,6 +4,8 @@
 
 [Oo]bj
 [Bb]in
+.vs 
+packages
 *.user
 *.suo
 *.[Cc]ache

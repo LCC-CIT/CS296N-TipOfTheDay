@@ -1,4 +1,4 @@
-cs297nExample-TipOfTheDay
+CS296N-TipOfTheDay
 =========================
 
 MVC web site example
